@@ -810,7 +810,7 @@ body {
             left: 125%;
         }
     }
-
+* { color: white !important; }
     /* ШАПКА ТА ІКОНКИ */
     .header-content {
         display: flex;
