@@ -793,6 +793,13 @@ body {
    ========================================= */
 
 @media (max-width: 390px) {
+
+    /* ПРАВИЛО ПРОТИ СИНІХ НОМЕРІВ ТЕЛЕФОНУ */
+    a[href^="tel"] {
+        color: inherit !important;
+        text-decoration: none !important;
+    }
+
     /* --- АНІМАЦІЇ (KEYFRAMES) --- */
     @keyframes slideInUp {
         from {
@@ -810,7 +817,7 @@ body {
             left: 125%;
         }
     }
-* { color: white !important; }
+
     /* ШАПКА ТА ІКОНКИ */
     .header-content {
         display: flex;
@@ -887,12 +894,12 @@ body {
     }
     .hero h1 {
         font-size: 26px;
-        animation: slideInUp 1s ease-out forwards; /* Анімація додана */
+        animation: slideInUp 1s ease-out forwards;
     }
     .hero p {
         font-size: 13px;
         margin-bottom: 25px;
-        animation: slideInUp 1.2s ease-out 0.3s forwards; /* Анімація додана */
+        animation: slideInUp 1.2s ease-out 0.3s forwards;
         opacity: 0;
     }
 
@@ -999,7 +1006,7 @@ body {
     /* ОБ'ЄКТИ (КАРТКИ) */
     .pricing-card {
         position: relative;
-        overflow: hidden; /* Ефект сяйва */
+        overflow: hidden;
     }
     .pricing-card::before {
         content: "";
@@ -1129,10 +1136,10 @@ body {
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
         font-size: 17px !important;
     }
-     .footer-link-blue, .footer a[href*="maps"], .footer a[href*="google"] {
-    color: #dfdfdf !important; /* Твій основний колір тексту */
-    text-decoration: none !important;
-}
+    .footer-link-blue, .footer a[href*="maps"], .footer a[href*="google"] {
+        color: #dfdfdf !important;
+        text-decoration: none !important;
+    }
     .footer-socials {
         display: flex !important;
         justify-content: center !important;
