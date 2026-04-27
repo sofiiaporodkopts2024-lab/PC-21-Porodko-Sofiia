@@ -1,0 +1,1151 @@
+/* =========================================
+   БАЗОВІ СТИЛІ ТА НАЛАШТУВАННЯ
+   ========================================= */
+html {
+    scroll-behavior: smooth;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+body {
+    background-color: #f9f9f9;
+    color: #333;
+}
+.container { /* [ЦЕНТРУВАННЯ]: Метод margin: 0 auto для вирівнювання всього сайту по центру */
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* =========================================
+   HEADER (ШАПКА САЙТУ)
+   ========================================= */
+.burger-check, .burger-icon {
+    display: none;/* Приховано для ПК версії */
+}
+.header {
+    background-color: rgba(60, 60, 60, 0.7); 
+    padding: 10px 0;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;/* [Z-INDEX]: Гарантує, що меню завжди буде зверху інших блоків */
+}
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    height: 140px;
+    width: auto;
+    display: block;
+    margin: -40px 0;
+}
+.nav { /* [FLEXBOX]: Горизонтальне меню з великими відступами */
+    display: flex;
+    gap: 70px;
+    align-items: center;
+    justify-content: center;
+    flex: 5;
+}
+.nav a {
+    color: #dfdfdf;
+    text-decoration: none;
+    font-size: 14px;
+    font-style: italic;
+    transition: color 0.3s ease;
+}
+.nav a:hover {
+    color: #fff;
+}
+.contact-phone {
+    color: #dfdfdf;
+    font-size: 14px;
+    font-style: italic;
+    flex: 1;
+    text-align: right;
+}
+
+/* =========================================
+   ВИПАДАЮЧЕ МЕНЮ (ДЛЯ ПК)
+   ========================================= */
+.dropdown {
+    position: relative; /* База для позиціонування випадаючого списку */
+    display: inline-block;
+}
+.dropdown-content {
+    display: none; /* [ЦЕНТРУВАННЯ]: Абсолютне позиціонування по центру відносно батька */
+    position: absolute;
+    background-color: rgba(60, 60, 60, 0.95);
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    z-index: 101;
+    border-radius: 15px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 0;
+    margin-top: 10px;
+}
+.dropdown-content a {
+    color: #dfdfdf;
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+.dropdown:hover .dropdown-content {
+    display: block; /* Показ меню при наведенні */
+}
+
+/* =========================================
+   БУРГЕР-МЕНЮ (БАЗОВІ СТИЛІ)
+   ========================================= */
+.burger-menu {
+    display: none; 
+    cursor: pointer;
+    z-index: 102;
+}
+.burger-menu img {
+    width: 35px;
+    height: auto;
+    filter: invert(1); 
+}
+
+/* =========================================
+   HERO СЕКЦІЯ (ГОЛОВНИЙ ЕКРАН)
+   ========================================= */
+   /* --- АНІМАЦІЯ ПЛАВНОЇ ПОЯВИ ТЕКСТУ (HERO) --- */
+
+/* Описуємо рух: текст випливає знизу вгору і стає видимим */
+@keyframes slideInUp {
+    from {
+        opacity: 0; /* Повністю прозорий */
+        transform: translateY(50px); /* Знаходиться на 50 пікселів нижче своєї позиції */
+    }
+    to {
+        opacity: 1; /* Повністю видимий */
+        transform: translateY(0); /* Повертається на своє законне місце */
+    }
+}
+
+.hero h1 {
+    /* Запускаємо появу для головного заголовка (триває 1 секунду) */
+    animation: slideInUp 1s ease-out forwards;
+}
+
+.hero p {
+    /* Запускаємо появу для підзаголовка, але з паузою 0.3 сек, щоб він з'явився другим */
+    animation: slideInUp 1.2s ease-out 0.3s forwards;
+    opacity: 0; /* Тримаємо невидимим, поки не почнеться анімація */
+}
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../image/hero-bg.png');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 180px 0 120px 0;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.hero h1 {
+    font-size: 42px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+.hero p {
+    font-size: 15px;
+    max-width: 800px;
+    margin: 0 auto 40px auto; /* [ЦЕНТРУВАННЯ]: margin auto для обмеженого тексту */
+    line-height: 1.6;
+    font-style: italic;
+    color: #d1d1d1;
+}
+.btn-primary {
+    background-color: rgba(40, 40, 40, 0.6);
+    border: 1px solid #666;
+    color: #fff;
+    padding: 12px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    font-style: italic;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background-color: rgba(60, 60, 60, 0.9);
+    border-color: #888;
+}
+
+/* =========================================
+   ПРО КОМПАНІЮ (З ДЕКОРОМ ТА ЧИСТОЮ СТРУКТУРОЮ)
+   ========================================= */
+.about-modern-section {
+    position: relative;
+    padding: 100px 0;
+    background: linear-gradient(180deg, rgba(32, 30, 28, 0.95) 0%, #867E75 100%) !important;
+    overflow: hidden; 
+    color: #fff;
+}
+
+/* Декоративні кола на фоні */
+.bg-circles {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;/* Рівень під основним контентом */
+    pointer-events: none;
+}
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05); 
+}
+.c1 { width: 120px; height: 120px; top: 12%; left: 6%; }
+.c2 { width: 150px; height: 150px; top: -5%; left: 38%; }
+.c3 { width: 300px; height: 300px; top: -15%; right: 15%; }
+.c4 { width: 35px; height: 35px; top: 32%; right: 48%; }
+.c5 { width: 100px; height: 100px; top: 8%; right: 8%; }
+.c6 { width: 70px; height: 70px; top: -5%; left: 10%; }
+
+/* Заголовок */
+.about-modern-title {
+    position: relative;
+    z-index: 2; 
+    font-size: 28px; /* [FLEXBOX]: Вирівнювання заголовка та іконки в центрі */
+    font-weight: 500;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 60px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.icon-user {
+    width: 28px; 
+    height: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.49;
+}
+
+/* Контент: Текст 55% та Фото */
+.about-modern-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: cente;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.about-text-column {
+    flex: 1;
+    max-width: 100%;
+}
+
+.about-quote {
+    font-size: 16px;
+    line-height: 1.6;
+    font-style: italic;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.highlight-text {
+    font-size: 28px;
+    font-weight: 500;
+}
+
+/* Фото */
+.about-modern-img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 71px; 
+    border: 1px solid #666; 
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    object-fit: cover; /* Зберігає пропорції фото при зміні розміру */
+}
+
+.about-modern-img:hover {
+    transform: scale(1.02);
+}
+/* =========================================
+   ВІДГУКИ (REVIEWS)
+   ========================================= */
+.reviews-section {
+    padding: 100px 0;
+    background-color: #867E75;
+    color: #fff;
+    text-align: center;
+}
+.reviews-grid { /* [FLEXBOX]: Розподіл карток відгуків */
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 80px;    
+}
+.review-card {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 60px 25px 35px;
+    border-radius: 50px;
+    flex: 1;
+    min-width: 300px; лорпоареа
+    max-width: 360px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+.review-card:hover {
+    transform: translateY(-5px);
+}
+.review-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid #867E75;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+.review-text-wrap {
+    display: block;
+}
+.review-author {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+    text-align: center; 
+}
+.review-text {
+    font-size: 14px;
+    line-height: 1.7;
+    font-style: italic;
+    color: #e0e0e0;
+}
+/* =========================================
+   ОБЄ"КТИ
+   ========================================= */
+
+/* Основний контейнер секції */
+.objects-premium-section {
+    background: linear-gradient(180deg, #867E75 0%, rgba(30, 30, 28, 0.9) 100%) !important;
+    padding: 80px 0;
+    color: #fff;
+    text-align: center;
+}
+
+.objects-grid-layout {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* підлаштовується  під найвищий елемент*/
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* відступи ліво,право моб.*/
+}
+
+/* Центральна панель */
+.objects-center-panel {
+    flex: 1.5;
+    background: linear-gradient(180deg, #817971 0%, #1B1918 100%);
+    border-radius: 71px;
+    padding: 40px 20px;
+    border: 1px solid #666; /* рамка */
+    display: flex;
+    flex-direction: column;  /* вертикально */
+    justify-content: space-between;
+    gap: 15px;
+}
+
+/* СТИЛІ КАРТКИ  */
+
+/* 1. Описуємо сам рух: пересуваємо "блік" зліва направо до кінця */
+@keyframes shine {
+    100% {
+        left: 125%;
+    }
+}
+
+.pricing-card {
+    position: relative;
+    overflow: hidden; /* Обрізаємо все, що виходить за межі картки (щоб блік не "літав" по всьому сайту) */
+}
+
+/* Створюємо сам "блік" (напівпрозора біла смужка), який поки що захований зліва */
+.pricing-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%; /* Ховаємо смужку за лівим краєм картки */
+    width: 50%;
+    height: 100%;
+    /* Робимо градієнт: від прозорого до ледь білого */
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 100%);
+    transform: skewX(-25deg); /* Нахиляємо смужку, щоб вона була діагональною */
+}
+
+/* Коли наводимо курсор на картку — запускаємо рух "бліка" */
+.pricing-card:hover::before {
+    animation: shine 0.75s; /* Блік пробігає за 0.75 секунди */
+}
+.pricing-card {
+    width: 100%;
+    padding: 25px 15px;
+    border-radius: 40px;
+    transition: all 0.4s ease; /* плавна зміна фону */
+    border: 1px solid transparent;
+}
+
+/* ЕФЕКТ ПРИ НАВЕДЕННІ */
+.pricing-card:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Зміна кольору фону */
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+.pricing-card h3 {
+    font-size: 23px;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.obj-desc {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.obj-price {
+    display: flex;
+    flex-direction: column; /* вертикально */
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+/* КНОПКА ЗАМОВИТИ  */
+.btn-buy {
+    display: inline-block;/* підлаштовується під текст*/
+    padding: 10px 30px;
+    border: 1px solid #fff;
+    color: #fff;
+    text-decoration: none; /*забрати підкреслення*/
+    border-radius: 25px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-buy:hover {
+    background-color: #fff;
+    color: #1b1918;
+}
+
+/* Картинки збоку */
+.objects-col-images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.obj-pill-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /*не розтягуючи і не сплющуючи її*/
+    border-radius: 60px;
+    border: 1px solid #666;
+    transition: 0.3s;
+}
+
+.obj-pill-img:hover {
+    transform: scale(1.03);
+}
+
+/* Верхні розміри секції */
+.objects-footer {
+    margin-top: 50px;
+}
+
+
+/* =========================================
+   КОНТАКТИ ТА ФОРМА
+   ========================================= */
+   /* --- АНІМАЦІЯ ІКОНОК (КОНТАКТИ) --- */
+
+.contact-list img {
+    /* Робимо зміну розміру плавною та додаємо ефект "пружини" (cubic-bezier) */
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.contact-list li:hover img {
+    transform: scale(1.2) rotate(-10deg); /* При наведенні: збільшуємо на 20% і трішки нахиляємо вбік */
+}
+.contacts-section-dark {
+    position: relative;
+    overflow: hidden; /* обрізає зайве*/
+    padding: 80px 20px 100px 20px;
+    color: #fff;
+    background: none; /* скасування фону*/
+}
+.bg-video-contacts { 
+    position: absolute; /* відео під контентом */
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; /* не деформувало */
+    z-index: 1; 
+} 
+/* Затемнення відео */
+.video-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(32, 30, 28, 0.75); 
+    z-index: 2; 
+}
+.contacts-section-dark .section-header,
+.contacts-section-dark .contacts-container {
+    position: relative;
+    z-index: 3;/* [FLEXBOX]: мапа та форма стоять поруч */
+}
+.icon-object {
+    width: 28px;
+    height: auto;
+    filter: invert(1);
+    opacity: 0.49;/* прозорість*/
+}
+.contacts-container {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;/* адаптивність під тел. */
+    max-width: 960px;
+    margin: 0 auto;
+}
+.contact-info-block {
+    flex: 1;
+    min-width: 300px;
+}
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin:  35px 0;
+    display: flex;
+    flex-direction: column;/*вертикально в стовпчик*/
+    gap: 15px;
+}
+.contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;/* відступ між іконкою та текстом */
+    font-size: 15px;
+    font-style: italic;
+}
+/*контактні іконки*/
+.contact-list img {
+    width: 24px;
+    filter: brightness(0) invert(1);
+}
+.contact-map {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;/* мапа квадратна */
+    display: block;/*перетворення на блочний елемент*/
+    margin: 0 auto;
+    object-fit: cover;/*заповнює весь квадрат без деформації */
+    border-radius: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease; /*анімація при наведенні мишки */
+}
+/*збільшення мапи на 2% */
+.contact-map:hover {
+    transform: scale(1.02);
+}
+.contact-form {
+    flex: 0.9;
+    min-width: 500px; 
+    min-height: 300px; 
+    display: flex;
+    flex-direction: column;/* розташовуєм поля стовпчиком*/
+    justify-content: center;
+    background: transparent;/*робимо фон прозорим */
+    padding: 20px;/* відступ між полями і текстом*/
+    border-radius: 60px; 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);/*тінь*/ 
+}
+.contact-form h3 {
+    text-align: center;
+    font-size: 22px;/*шрифт*/
+    font-weight: 400;/*товщина*/
+    font-style: italic;
+    margin: 0 0 40px 0;
+    color: #ffffff;
+    letter-spacing: 0.5px;/*розсовування літер*/
+}
+.form-group {
+    margin-bottom: 22px; 
+    position: relative;/*щоб не вилітало за межі*/
+}
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 15px 25px; 
+    background-color: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    border-radius: 100px; 
+    color: #ffffff !important; 
+    font-size: 15px;
+    font-style: italic; 
+    font-family: inherit;/*використання мого шрифта*/
+    font-weight: 300;/*тонкість шрифта*/
+    outline: none;
+    transition: all 0.3s ease;
+}
+.form-group input::placeholder, /*пошта,ім'я*/
+.form-group textarea::placeholder,/*для великих повідомлень*/
+.form-group select { /*випадаюче меню*/
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-style: italic;
+}
+/*колір тексту випадаючого меню*/
+.form-group select:focus,
+.form-group select:not([value=""]) {
+    color: #ffffff !important;
+}
+/*стилізація віконця зі списком варіантів*/
+.form-group select option {
+    background-color: #373331; 
+    color: #ffffff;
+    font-style: normal;/*забираємо курсив*/
+}
+/* стилізація іконки календаря */
+.form-group input::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* з чорної іконки в  білу */
+    opacity: 0.8;
+    cursor: pointer; 
+} 
+
+/* очищення випадаючого списку від стандартних стилів */
+.form-group select {
+    appearance: none; /* прибираємо стандартну стрілку */
+    -webkit-appearance: none;  /* підтримка для Safari та Chrome */
+    cursor: pointer;  
+}
+.form-group textarea {
+    resize: none; /* заборона змінювати розмір поля вручну */
+    height: 60px;
+    border-radius: 30px;
+    scrollbar-width: none; /*приховування прокрутки*/
+}
+/*кнопка записатись*/
+.btn-submit {
+    display: block;
+    margin: 20px auto 0 auto;
+    background-color: rgba(255, 255, 255, 0.05); 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    color: #ffffff;
+    padding: 15px 70px; /*розмір кнопки*/
+    border-radius: 100px; 
+    font-size: 16px;
+    font-style: italic;
+    text-transform: uppercase; /*всі літери великими */
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+/* ефект при наведенні курсору на кнопку */
+.btn-submit:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+/* приховування елементів, які мають бачити тільки зчитувачі */
+.visually-hidden {
+    position: absolute;/*елемент перестає взаємодіяти з іншими об'єктами*/
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0; /*внут відступи*/
+    overflow: hidden; /* ховаємо все, що виходить за межі 1 пікселя */
+    clip: rect(0, 0, 0, 0); /* обрізаєм елемент */
+    border: 0; /*рамки*/
+}
+
+/* =========================================
+   ФУТЕР
+   ========================================= */
+.footer {
+    background-color: rgba(60, 56, 52, 0.9); 
+    padding: 30px 20px 40px 20px;
+    color: #fff;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.footer-logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.footer-logo img {
+    height: 140px;            
+    width: auto;
+    display: block;
+    margin: -40px 0;        
+    transition: opacity 0.3s ease;
+}
+.footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.footer-nav {
+    display: flex;
+    gap: 25px;
+}
+.footer-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-style: italic;
+    transition: opacity 0.3s;
+}
+.footer-nav a:hover {
+    opacity: 0.7;
+}
+.footer-phone {
+    background-color: rgba(47, 44, 42, 0.8); 
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-style: italic;
+}
+.footer-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.footer-info .address {
+    font-size: 24px;
+    font-style: italic;
+    margin-right: 5px;
+}
+.footer-info .icon {
+    height: 24px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s;
+}
+.footer-info .icon:hover {
+    transform: scale(1.1);
+}
+
+/* =========================================
+   АДАПТАЦІЯ ПІД МОБІЛЬНИЙ РОЗМІР 390px 
+   ========================================= */
+
+@media (max-width: 390px) {
+    /* --- АНІМАЦІЇ (KEYFRAMES) --- */
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes shine {
+        100% {
+            left: 125%;
+        }
+    }
+
+    /* ШАПКА ТА ІКОНКИ */
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        position: relative !important;
+    }
+    .logo img {
+        height: 60px; 
+        display: block;
+    }
+    .contact-phone {
+        display: none !important;
+    }
+    .burger-icon {
+        display: block !important;
+        font-size: 35px !important;
+        color: #fff !important;
+        cursor: pointer;
+        z-index: 110;
+        user-select: none;
+    }
+
+    /* САМЕ МЕНЮ */
+    .nav {
+        display: none !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: 100% !important;
+        background-color: rgba(60, 60, 60, 0.98) !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 15px 0 !important;
+        z-index: 105 !important;
+        border-radius: 0 0 20px 20px !important;
+    }
+    .nav a {
+        padding: 15px 0 !important;
+        display: block !important;
+        width: 100% !important;
+        font-size: 16px !important;
+    }
+
+    .burger-check:checked ~ .nav {
+        display: flex !important;
+    }
+
+    /* ВИПАДАЮЧИЙ СПИСОК "ОБ'ЄКТИ" */
+    .dropdown {
+        width: 100%;
+    }
+    .dropdown-content {
+        position: static !important; 
+        display: none !important; 
+        background-color: rgba(40, 40, 40, 0.95) !important; 
+        min-width: 100% !important;
+        box-shadow: none !important;
+        transform: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin-top: 0 !important;
+    }
+    .dropdown:hover .dropdown-content,
+    .dropdown:active .dropdown-content {
+        display: block !important; 
+    }
+
+    /* HERO СЕКЦІЯ */
+    .hero {
+        padding: 130px 15px 50px 15px;
+        min-height: auto;
+    }
+    .hero h1 {
+        font-size: 26px;
+        animation: slideInUp 1s ease-out forwards; /* Анімація додана */
+    }
+    .hero p {
+        font-size: 13px;
+        margin-bottom: 25px;
+        animation: slideInUp 1.2s ease-out 0.3s forwards; /* Анімація додана */
+        opacity: 0;
+    }
+
+    /* СЕКЦІЯ: ПРО КОМПАНІЮ */
+    .about-modern-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        text-align: center;
+        padding: 0 15px;
+    }
+    .about-modern-title {
+        display: flex;
+        flex-direction: row; 
+        justify-content: center;
+        align-items: center;
+        gap: 10px; 
+        font-size: 20px;
+        font-style: italic;
+        margin-bottom: 25px;
+        width: 100%;
+    }
+    .about-modern-title::after {
+        content: '';
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        background: url('pngwing.com.png') no-repeat center;
+        background-size: contain;
+    }
+
+    .about-image-column {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+        order: -1; 
+    }
+    .about-modern-img {
+        width: 95% !important;
+        max-width: 350px;
+        height: auto;
+        max-height: 260px;
+        object-fit: cover;
+        border-radius: 70px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        display: block;
+        margin: 0 auto;
+    }
+    .about-text-column {
+        width: 100%;
+        text-align: left;
+    }
+    .about-quote {
+        font-size: 15px;
+        line-height: 1.5;
+        color: #e0e0e0;
+        margin: 0;
+        padding: 0 5px;
+    }
+    .highlight-text {
+        font-size: 18px;
+        display: inline;
+    }
+
+    /* ВІДГУКИ */
+    .review-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        padding: 50px 30px;
+        width: 100%;
+        max-width: 700px;
+        margin: 20px auto;
+        border-radius: 60px;
+        background: linear-gradient(145deg, rgba(255,255,255,0.15), rgba(0,0,0,0.1));
+        backdrop-filter: blur(5px);
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .review-avatar {
+        flex-shrink: 0;
+        margin-right: 20px;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+    .review-text {
+        color: #e0e0e0;
+        font-size: 1.1rem;
+        line-height: 1.4;
+        font-style: italic;
+    }
+    .review-author {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #ffffff;
+    }
+
+    /* ОБ'ЄКТИ (КАРТКИ) */
+    .pricing-card {
+        position: relative;
+        overflow: hidden; /* Ефект сяйва */
+    }
+    .pricing-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 100%);
+        transform: skewX(-25deg);
+    }
+    .pricing-card:hover::before {
+        animation: shine 0.75s;
+    }
+
+    .objects-grid-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+    .objects-col-images {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+    }
+    .obj-pill-img {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        border: 2px solid #867E75;
+        object-fit: cover;
+    }
+    .objects-center-panel {
+        order: 3;
+        width: 100%;
+        margin-top: -210px;
+        padding: 230px 20px 30px 20px;
+        border-radius: 40px;
+        z-index: 1;
+        min-height: auto;
+    }
+    .obj-info-block h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+    .obj-desc, .obj-price {
+        font-size: 13px;
+        text-align: center;
+    }
+
+    /* КОНТАКТИ */
+    .contact-list img {
+        transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    .contact-list li:hover img {
+        transform: scale(1.2) rotate(-10deg);
+    }
+
+    .contact-info-block {
+        position: relative !important;
+        display: block !important;
+        min-height: 200px !important;
+        padding-top: 20px !important;
+    }
+    .contact-list {
+        width: 65% !important;
+        text-align: left !important;
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+    .contact-list li {
+        justify-content: flex-start !important;
+        font-size: 13px !important;
+        font-style: italic !important;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+    }
+    .contact-map {
+        position: absolute !important;
+        top: 0 !important;
+        right: 0 !important;
+        width: 150px !important;
+        height: 110px !important;
+        border-radius: 30px !important;
+        object-fit: cover !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
+        border: 2px solid rgba(255,255,255,0.1) !important;
+    }
+    .contact-form {
+        min-width: 100% !important;
+        padding: 20px 15px !important;
+        border-radius: 40px !important;
+        margin-top: -50px !important;
+        position: relative !important;
+        z-index: 5 !important;
+    }
+
+    /* ФУТЕР */
+    .footer-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 20px !important;
+    }
+    .footer-logo img {
+        height: 80px !important;
+        width: auto !important;
+        margin: 0 auto !important;
+    }
+    .footer-nav, .footer-info-group {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+        width: 100% !important;
+    }
+    .footer-text, .footer-item, .footer p, .footer-label, .footer-nav a {
+        color: #dfdfdf !important;
+        font-style: italic !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+        font-size: 17px !important;
+    }
+    .footer-link-blue, .footer a[href*="maps"], .footer a[href*="google"] {
+        color: #3498db !important;
+        text-decoration: underline !important;
+    }
+    .footer-socials {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 25px !important;
+        margin-top: 10px !important;
+        order: 10 !important;
+    }
+    .footer-socials img {
+        width: 30px !important;
+        filter: brightness(0) invert(1) !important;
+    }
+    .footer-row {
+        flex-direction: column !important;
+        border: none !important;
+    }
+}
