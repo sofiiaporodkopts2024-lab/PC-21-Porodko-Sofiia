@@ -1129,10 +1129,10 @@ body {
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
         font-size: 17px !important;
     }
-    .footer-link-blue, .footer a[href*="maps"], .footer a[href*="google"] {
-        color: #3498db !important;
-        text-decoration: underline !important;
-    }
+     .footer-link-blue, .footer a[href*="maps"], .footer a[href*="google"] {
+    color: #dfdfdf !important; /* Твій основний колір тексту */
+    text-decoration: none !important;
+}
     .footer-socials {
         display: flex !important;
         justify-content: center !important;
